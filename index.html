@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 工具定制开发</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #1a1a1a;
+    background: #fafafa;
+    line-height: 1.6;
+  }
+  .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  header {
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    font-size: 13px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 16px; }
+  .sub { font-size: 18px; color: #555; max-width: 480px; margin: 0 auto; }
+
+  /* Services */
+  section { padding: 60px 0; }
+  .section-title { font-size: 22px; font-weight: 700; margin-bottom: 32px; text-align: center; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 28px 24px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #aaa; }
+  .card .icon { font-size: 28px; margin-bottom: 12px; }
+  .card h3 { font-size: 16px; margin-bottom: 6px; }
+  .card p { font-size: 14px; color: #666; }
+
+  /* Process */
+  .steps { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .step {
+    flex: 1; min-width: 160px; max-width: 200px;
+    text-align: center; padding: 24px 16px;
+  }
+  .step-num {
+    width: 40px; height: 40px;
+    background: #000; color: #fff;
+    border-radius: 50%; display: flex;
+    align-items: center; justify-content: center;
+    font-weight: 700; font-size: 18px;
+    margin: 0 auto 12px;
+  }
+  .step h3 { font-size: 15px; margin-bottom: 4px; }
+  .step p { font-size: 13px; color: #666; }
+
+  /* CTA */
+  .cta {
+    background: #000; color: #fff;
+    border-radius: 16px; padding: 48px 32px;
+    text-align: center; margin: 20px 0 40px;
+  }
+  .cta h2 { font-size: 26px; margin-bottom: 12px; }
+  .cta p { color: #ccc; font-size: 15px; margin-bottom: 28px; }
+  .cta a {
+    display: inline-block;
+    background: #fff; color: #000;
+    font-weight: 600; font-size: 15px;
+    padding: 12px 32px; border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .cta a:hover { opacity: 0.85; }
+
+  footer {
+    text-align: center; padding: 32px 0 48px;
+    font-size: 13px; color: #999;
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 30px; }
+    header { padding: 48px 0 36px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="container">
+  <div class="badge">可接新单</div>
+  <h1>AI 工具定制，把你脑子里想的东西做出来</h1>
+  <p class="sub">一个懂业务的技术团队——你说想法，我们写代码。做不出来，不收钱。</p>
+</header>
+
+<section class="container">
+  <h2 class="section-title">能做什么</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🔧</div>
+      <h3>自动化脚本</h3>
+      <p>Excel处理、文件批量操作、数据采集清洗，重复劳动让机器干</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h3>网页 & 小程序</h3>
+      <p>企业官网、工具型页面、微信小程序，好看够用不贵</p>
+    </div>
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>AI 功能接入</h3>
+      <p>智能客服、内容生成、数据分析，把AI能力接进你的业务流程</p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2 class="section-title">怎么合作</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>你说需求</h3>
+      <p>微信或邮件聊清楚你要什么</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>我们报价</h3>
+      <p>24小时内给报价和工期</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>交付验收</h3>
+      <p>做完你满意了再付钱</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="cta">
+    <h2>有想法？聊聊看，聊不要钱</h2>
+    <p>把你的需求说清楚，我们帮你评估能不能做、多少钱</p>
+    <a href="mailto:3314003363@qq.com">发邮件聊聊</a>
+  </div>
+</div>
+
+<footer class="container">
+  &copy; 2026 独立开发者 · 代码说话，做不出来不要钱
+</footer>
+
+</body>
+</html>
