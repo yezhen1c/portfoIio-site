@@ -4,173 +4,423 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="AI工具定制开发——自动化脚本、网页小程序、AI功能接入。你说想法我们写代码，做不出来不收钱。">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#0f172a">
 <meta property="og:title" content="AI 工具定制开发">
 <meta property="og:description" content="你说想法，我们写代码。做不出来，不收钱。">
 <meta property="og:type" content="website">
 <title>AI 工具定制开发</title>
 <style>
   :root {
-    --c-black: #000;
-    --c-white: #fff;
-    --c-text: #1a1a1a;
-    --c-muted: #666;
-    --c-light: #999;
-    --c-bg: #fafafa;
-    --c-border: #e8e8e8;
+    --bg: #0f172a;
+    --card: #1e293b;
+    --border: #334155;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #818cf8;
+    --green: #4ade80;
+    --gradient: linear-gradient(135deg, #38bdf8, #818cf8);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    color: var(--c-text);
-    background: var(--c-bg);
-    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
   }
-  .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
-  header {
-    padding: 80px 0 60px;
+  /* Hero */
+  .hero {
+    padding: 100px 0 80px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
-  .badge {
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(56,189,248,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
     display: inline-block;
-    background: var(--c-black);
-    color: var(--c-white);
+    border: 1px solid var(--border);
+    color: var(--accent);
     font-size: 13px;
-    padding: 4px 14px;
+    padding: 5px 16px;
     border-radius: 20px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     letter-spacing: 1px;
+    position: relative;
   }
-  h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 16px; }
-  .sub { font-size: 18px; color: #555; max-width: 480px; margin: 0 auto; }
+  .hero-badge .dot {
+    display: inline-block; width: 7px; height: 7px;
+    background: var(--green); border-radius: 50%;
+    margin-right: 6px; animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 {
+    font-size: 44px; font-weight: 800; letter-spacing: -1px;
+    line-height: 1.2; margin-bottom: 20px; position: relative;
+  }
+  .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero .sub {
+    font-size: 18px; color: var(--muted); max-width: 520px;
+    margin: 0 auto 36px; position: relative;
+  }
+  .hero-cta {
+    display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    position: relative;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gradient);
+    color: #fff; font-weight: 600; font-size: 15px;
+    padding: 14px 36px; border-radius: 10px;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(56,189,248,0.25);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(56,189,248,0.35); }
+  .btn-secondary {
+    display: inline-block;
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border);
+    font-weight: 600; font-size: 15px;
+    padding: 14px 36px; border-radius: 10px;
+    text-decoration: none; transition: border-color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--muted); }
 
-  section { padding: 60px 0; }
-  .section-title { font-size: 22px; font-weight: 700; margin-bottom: 32px; text-align: center; }
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    list-style: none;
+  /* Stats */
+  .stats {
+    display: flex; justify-content: center; gap: 48px;
+    padding: 0 0 60px; flex-wrap: wrap;
   }
-  .card {
-    background: var(--c-white);
-    border: 1px solid var(--c-border);
-    border-radius: 12px;
-    padding: 28px 24px;
+  .stat { text-align: center; }
+  .stat-num { font-size: 32px; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* Sections */
+  section { padding: 80px 0; }
+  section:nth-child(even) { background: rgba(30,41,59,0.3); }
+  .section-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); margin-bottom: 12px; text-align: center;
+  }
+  .section-title { font-size: 28px; font-weight: 700; text-align: center; margin-bottom: 16px; }
+  .section-sub { text-align: center; color: var(--muted); font-size: 15px; margin-bottom: 48px; }
+
+  /* Capability cards */
+  .capabilities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px; list-style: none;
+  }
+  .cap-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 32px 24px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .cap-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .cap-card .icon { font-size: 36px; margin-bottom: 16px; display: block; }
+  .cap-card h3 { font-size: 17px; margin-bottom: 8px; }
+  .cap-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .cap-card .examples {
+    margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .cap-card .tag {
+    font-size: 11px; padding: 3px 10px;
+    border-radius: 12px; background: rgba(56,189,248,0.1);
+    color: var(--accent); border: 1px solid rgba(56,189,248,0.2);
+  }
+
+  /* Cases */
+  .cases { display: flex; flex-direction: column; gap: 16px; }
+  .case-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px 28px 28px 32px;
+    display: flex; gap: 20px; align-items: flex-start;
     transition: border-color 0.2s;
   }
-  .card:hover { border-color: #aaa; }
-  .card .icon { font-size: 28px; margin-bottom: 12px; }
-  .card h3 { font-size: 16px; margin-bottom: 6px; }
-  .card p { font-size: 14px; color: var(--c-muted); }
-
-  .steps { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; list-style: none; }
-  .step {
-    flex: 1; min-width: 160px; max-width: 200px;
-    text-align: center; padding: 24px 16px;
+  .case-card:hover { border-color: var(--accent); }
+  .case-icon {
+    font-size: 32px; flex-shrink: 0; width: 56px; height: 56px;
+    background: rgba(56,189,248,0.1); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
   }
-  .step-num {
-    width: 40px; height: 40px;
-    background: var(--c-black); color: var(--c-white);
+  .case-info { flex: 1; }
+  .case-info h3 { font-size: 16px; margin-bottom: 4px; }
+  .case-info .case-meta { font-size: 12px; color: var(--accent); margin-bottom: 8px; }
+  .case-info p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .case-result {
+    flex-shrink: 0; text-align: center;
+    padding: 12px 16px; background: rgba(74,222,128,0.08);
+    border-radius: 12px; border: 1px solid rgba(74,222,128,0.2);
+  }
+  .case-result .big { font-size: 24px; font-weight: 800; color: var(--green); }
+  .case-result .small { font-size: 11px; color: var(--muted); }
+
+  /* Process */
+  .process {
+    display: flex; gap: 20px; justify-content: center;
+    flex-wrap: wrap; list-style: none;
+  }
+  .process-step {
+    flex: 1; min-width: 180px; max-width: 220px;
+    text-align: center; padding: 32px 16px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; position: relative;
+  }
+  .process-step .num {
+    width: 44px; height: 44px;
+    background: var(--gradient); color: #fff;
     border-radius: 50%; display: flex;
     align-items: center; justify-content: center;
-    font-weight: 700; font-size: 18px;
-    margin: 0 auto 12px;
+    font-weight: 800; font-size: 20px;
+    margin: 0 auto 16px;
   }
-  .step h3 { font-size: 15px; margin-bottom: 4px; }
-  .step p { font-size: 13px; color: var(--c-muted); }
+  .process-step h3 { font-size: 15px; margin-bottom: 6px; }
+  .process-step p { font-size: 13px; color: var(--muted); }
 
-  .cta {
-    background: var(--c-black); color: var(--c-white);
-    border-radius: 16px; padding: 48px 32px;
-    text-align: center; margin: 20px 0 40px;
+  /* FAQ */
+  .faq { max-width: 640px; margin: 0 auto; }
+  .faq-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px 28px; margin-bottom: 10px;
   }
-  .cta h2 { font-size: 26px; margin-bottom: 12px; }
-  .cta p { color: #ccc; font-size: 15px; margin-bottom: 28px; }
-  .cta a {
-    display: inline-block;
-    background: var(--c-white); color: var(--c-black);
-    font-weight: 600; font-size: 15px;
-    padding: 12px 32px; border-radius: 8px;
-    text-decoration: none;
-    transition: opacity 0.2s;
+  .faq-item h4 { font-size: 15px; margin-bottom: 6px; }
+  .faq-item p { font-size: 14px; color: var(--muted); }
+
+  /* CTA */
+  .cta-section {
+    text-align: center; padding: 80px 0 100px;
   }
-  .cta a:hover { opacity: 0.85; }
+  .cta-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 56px 32px;
+    max-width: 600px; margin: 0 auto;
+    position: relative; overflow: hidden;
+  }
+  .cta-card::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%; transform: translateX(-50%);
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(129,140,248,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-card h2 { font-size: 26px; margin-bottom: 12px; position: relative; }
+  .cta-card p { color: var(--muted); margin-bottom: 28px; position: relative; }
+  .cta-card .btn-primary { position: relative; }
 
   footer {
     text-align: center; padding: 32px 0 48px;
-    font-size: 13px; color: var(--c-light);
+    font-size: 13px; color: #475569;
+    border-top: 1px solid var(--border);
   }
 
-  @media (max-width: 600px) {
-    h1 { font-size: 30px; }
-    header { padding: 48px 0 36px; }
+  @media (max-width: 640px) {
+    .hero { padding: 60px 0 48px; }
+    .hero h1 { font-size: 30px; }
+    .hero .sub { font-size: 15px; }
+    .stats { gap: 28px; }
+    .case-card { flex-direction: column; }
+    .case-result { align-self: stretch; text-align: center; }
+    .section-title { font-size: 24px; }
+    section { padding: 48px 0; }
   }
 </style>
 </head>
 <body>
 
-<main>
-  <header class="container">
-    <div class="badge">可接新单</div>
-    <h1>AI 工具定制，把你脑子里想的东西做出来</h1>
-    <p class="sub">一个懂业务的技术团队——你说想法，我们写代码。做不出来，不收钱。</p>
-  </header>
+<!-- Hero -->
+<header class="hero container">
+  <div class="hero-badge"><span class="dot"></span>可接新单 · 当天响应</div>
+  <h1>你的<span>想法</span>，我们把它<span>做出来</span></h1>
+  <p class="sub">AI工具定制开发——自动化脚本、智能客服、网页小程序。<br>做不出来，不收钱。</p>
+  <div class="hero-cta">
+    <a href="mailto:3314003363@qq.com" class="btn-primary">说出你的需求 →</a>
+    <a href="#capabilities" class="btn-secondary">看看能做什么</a>
+  </div>
+</header>
 
-  <section class="container">
-    <h2 class="section-title">能做什么</h2>
-    <ul class="cards">
-      <li class="card">
-        <div class="icon">🔧</div>
-        <h3>自动化脚本</h3>
-        <p>Excel处理、文件批量操作、数据采集清洗，重复劳动让机器干</p>
-      </li>
-      <li class="card">
-        <div class="icon">🌐</div>
-        <h3>网页 & 小程序</h3>
-        <p>企业官网、工具型页面、微信小程序，好看够用不贵</p>
-      </li>
-      <li class="card">
-        <div class="icon">🤖</div>
+<!-- Stats -->
+<div class="stats container">
+  <div class="stat">
+    <div class="stat-num">&lt; 48h</div>
+    <div class="stat-label">平均交付周期</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">24h</div>
+    <div class="stat-label">报价响应时间</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">0</div>
+    <div class="stat-label">先付款风险</div>
+  </div>
+</div>
+
+<!-- Capabilities -->
+<section id="capabilities">
+  <div class="container">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">能帮你做什么</h2>
+    <p class="section-sub">不是模板套用，每个需求独立分析、定制开发</p>
+    <div class="capabilities">
+      <div class="cap-card">
+        <span class="icon">⚡</span>
+        <h3>自动化脚本 & 工具</h3>
+        <p>把每天重复操作的事情写成程序，一键跑完。省下的时间就是利润。</p>
+        <div class="examples">
+          <span class="tag">Excel批量处理</span>
+          <span class="tag">数据采集清洗</span>
+          <span class="tag">订单自动录入</span>
+          <span class="tag">报表自动生成</span>
+          <span class="tag">文件批量改名</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <span class="icon">🌐</span>
+        <h3>网页 & 微信小程序</h3>
+        <p>企业官网、预约系统、管理后台、轻量小程序——好看、够用、加载快。</p>
+        <div class="examples">
+          <span class="tag">企业官网</span>
+          <span class="tag">预约/预订系统</span>
+          <span class="tag">微信小程序</span>
+          <span class="tag">数据看板</span>
+          <span class="tag">H5活动页</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <span class="icon">🤖</span>
         <h3>AI 功能接入</h3>
-        <p>智能客服、内容生成、数据分析，把AI能力接进你的业务流程</p>
-      </li>
-    </ul>
-  </section>
-
-  <section class="container">
-    <h2 class="section-title">怎么合作</h2>
-    <ol class="steps">
-      <li class="step">
-        <div class="step-num">1</div>
-        <h3>你说需求</h3>
-        <p>微信或邮件聊清楚你要什么</p>
-      </li>
-      <li class="step">
-        <div class="step-num">2</div>
-        <h3>我们报价</h3>
-        <p>24小时内给报价和工期</p>
-      </li>
-      <li class="step">
-        <div class="step-num">3</div>
-        <h3>交付验收</h3>
-        <p>做完你满意了再付钱</p>
-      </li>
-    </ol>
-  </section>
-
-  <section class="container">
-    <div class="cta">
-      <h2>有想法？聊聊看，聊不要钱</h2>
-      <p>把你的需求说清楚，我们帮你评估能不能做、多少钱</p>
-      <a href="mailto:3314003363@qq.com">发邮件聊聊</a>
+        <p>把大模型能力真正落到业务里——不是讲概念，是能跑起来的东西。</p>
+        <div class="examples">
+          <span class="tag">智能客服机器人</span>
+          <span class="tag">企业知识库问答</span>
+          <span class="tag">内容自动生成</span>
+          <span class="tag">文档智能分析</span>
+          <span class="tag">AI数据分类</span>
+        </div>
+      </div>
     </div>
-  </section>
-</main>
+  </div>
+</section>
+
+<!-- Cases -->
+<section id="cases">
+  <div class="container">
+    <div class="section-label">Case Studies</div>
+    <h2 class="section-title">几个真实场景</h2>
+    <p class="section-sub">看看有没有跟你差不多的</p>
+    <div class="cases">
+      <div class="case-card">
+        <div class="case-icon">💇</div>
+        <div class="case-info">
+          <h3>理发店微信客服机器人</h3>
+          <div class="case-meta">AI智能客服 · 2天交付</div>
+          <p>老板每天手动回几十条预约消息。接上AI客服后，自动回预约时间、发价目表、发定位，复杂问题才转人工。老板说"等于省了一个前台"。</p>
+        </div>
+        <div class="case-result">
+          <div class="big">3h/天</div>
+          <div class="small">省下的人工时间</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-icon">📊</div>
+        <div class="case-info">
+          <h3>电商每日报表自动生成</h3>
+          <div class="case-meta">自动化脚本 · 1天交付</div>
+          <p>客户每天要从3个平台导出订单数据、对账、算利润，手工弄1个多小时。写了自动化脚本，每天点一下，3分钟出结果，自动发到邮箱。</p>
+        </div>
+        <div class="case-result">
+          <div class="big">95%</div>
+          <div class="small">操作时间减少</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-icon">🏪</div>
+        <div class="case-info">
+          <h3>小型律所知识库问答</h3>
+          <div class="case-meta">AI知识库 · 5天交付</div>
+          <p>律所有几百份判例文档，翻起来费劲。把文档导入AI知识库后，输入问题直接出相关判例和法条摘要，效率翻了好几倍。</p>
+        </div>
+        <div class="case-result">
+          <div class="big">秒级</div>
+          <div class="small">检索响应速度</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process">
+  <div class="container">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">怎么合作</h2>
+    <p class="section-sub">简单直接，没有套路</p>
+    <div class="process">
+      <div class="process-step">
+        <div class="num">1</div>
+        <h3>你说需求</h3>
+        <p>微信或邮件把你要做的事情说清楚，越具体越好</p>
+      </div>
+      <div class="process-step">
+        <div class="num">2</div>
+        <h3>我报价给工期</h3>
+        <p>24小时内评估能不能做、多少钱、多久交付</p>
+      </div>
+      <div class="process-step">
+        <div class="num">3</div>
+        <h3>做完验收再付</h3>
+        <p>交付给你测试，满意了再付钱。不满意改到满意为止</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">你可能想问</h2>
+    <p class="section-sub"></p>
+    <div class="faq">
+      <div class="faq-item">
+        <h4>真的做不出来不收钱？</h4>
+        <p>真的。开工前我会评估能不能做，技术上没把握的不会接。接了就一定给你做出来。</p>
+      </div>
+      <div class="faq-item">
+        <h4>怎么保证交付质量？</h4>
+        <p>交付后7天内免费修改。后续维护按需议价，小改动通常不收钱。</p>
+      </div>
+      <div class="faq-item">
+        <h4>一般多少钱？</h4>
+        <p>简单自动化脚本 300-2000；网页/小程序 2000-15000；AI功能接入 3000-30000。具体看你需求复杂度。</p>
+      </div>
+      <div class="faq-item">
+        <h4>数据安全有保障吗？</h4>
+        <p>你的数据就是你的。开发完成后所有源码、文档全部交付，不保留副本。敏感数据可以签保密协议。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section container">
+  <div class="cta-card">
+    <h2>有想法？聊聊看，聊不要钱</h2>
+    <p>把你的需求说清楚，我来评估能不能做、划不划算。<br>能做就报价，不能做直说，不浪费你时间。</p>
+    <a href="mailto:3314003363@qq.com" class="btn-primary">发邮件聊聊 →</a>
+  </div>
+</div>
 
 <footer class="container">
-  &copy; 2026 独立开发者 · 代码说话，做不出来不要钱
+  独立开发者 · 代码说话 · 做不出来不要钱
 </footer>
 
 </body>
