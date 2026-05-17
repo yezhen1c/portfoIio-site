@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="AI工具定制开发——自动化脚本、网页小程序、AI功能接入。你说想法我们写代码，做不出来不收钱。">
 <meta name="theme-color" content="#0f172a">
-<meta property="og:title" content="AI 工具定制开发">
+<meta property="og:title" content="AI 工具定制开发 | 做不出来不收钱">
 <meta property="og:description" content="你说想法，我们写代码。做不出来，不收钱。">
 <meta property="og:type" content="website">
-<title>AI 工具定制开发</title>
+<title>AI 工具定制开发 | 做不出来不收钱</title>
 <style>
   :root {
     --bg: #0f172a;
@@ -20,103 +20,99 @@
     --accent2: #818cf8;
     --green: #4ade80;
     --gradient: linear-gradient(135deg, #38bdf8, #818cf8);
+    --gradient-warm: linear-gradient(135deg, #f59e0b, #ef4444);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    color: var(--text);
-    background: var(--bg);
-    line-height: 1.7;
+    color: var(--text); background: var(--bg); line-height: 1.7;
   }
   .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
   /* Hero */
   .hero {
-    padding: 100px 0 80px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    padding: 90px 0 60px; text-align: center; position: relative; overflow: hidden;
   }
   .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; left: 50%; transform: translateX(-50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(56,189,248,0.12) 0%, transparent 70%);
+    content: ''; position: absolute; top: -250px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 60%);
     pointer-events: none;
   }
   .hero-badge {
-    display: inline-block;
-    border: 1px solid var(--border);
-    color: var(--accent);
-    font-size: 13px;
-    padding: 5px 16px;
-    border-radius: 20px;
-    margin-bottom: 28px;
-    letter-spacing: 1px;
-    position: relative;
+    display: inline-block; border: 1px solid var(--border); color: var(--accent);
+    font-size: 13px; padding: 5px 16px; border-radius: 20px; margin-bottom: 24px;
+    letter-spacing: 1px; position: relative;
   }
   .hero-badge .dot {
     display: inline-block; width: 7px; height: 7px;
-    background: var(--green); border-radius: 50%;
-    margin-right: 6px; animation: pulse 2s infinite;
+    background: var(--green); border-radius: 50%; margin-right: 8px;
+    animation: pulse 2s infinite;
   }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
   .hero h1 {
-    font-size: 44px; font-weight: 800; letter-spacing: -1px;
-    line-height: 1.2; margin-bottom: 20px; position: relative;
+    font-size: 42px; font-weight: 800; letter-spacing: -1px;
+    line-height: 1.25; margin-bottom: 18px; position: relative;
   }
   .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .hero .sub {
-    font-size: 18px; color: var(--muted); max-width: 520px;
-    margin: 0 auto 36px; position: relative;
+    font-size: 17px; color: var(--muted); max-width: 540px;
+    margin: 0 auto 32px; position: relative; line-height: 1.7;
   }
   .hero-cta {
-    display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center;
-    position: relative;
+    display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative;
   }
   .btn-primary {
-    display: inline-block;
-    background: var(--gradient);
-    color: #fff; font-weight: 600; font-size: 15px;
-    padding: 14px 36px; border-radius: 10px;
+    display: inline-block; background: var(--gradient); color: #fff;
+    font-weight: 600; font-size: 15px; padding: 14px 36px; border-radius: 10px;
     text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 24px rgba(56,189,248,0.25);
+    box-shadow: 0 4px 24px rgba(56,189,248,0.25); border: none; cursor: pointer;
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(56,189,248,0.35); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(56,189,248,0.4); }
   .btn-secondary {
-    display: inline-block;
-    background: transparent; color: var(--text);
-    border: 1px solid var(--border);
-    font-weight: 600; font-size: 15px;
-    padding: 14px 36px; border-radius: 10px;
-    text-decoration: none; transition: border-color 0.2s;
+    display: inline-block; background: transparent; color: var(--text);
+    border: 1px solid var(--border); font-weight: 600; font-size: 15px;
+    padding: 14px 36px; border-radius: 10px; text-decoration: none; transition: border-color 0.2s;
   }
   .btn-secondary:hover { border-color: var(--muted); }
 
-  /* Stats */
-  .stats {
-    display: flex; justify-content: center; gap: 48px;
-    padding: 0 0 60px; flex-wrap: wrap;
+  /* Trust bar */
+  .trust-bar {
+    display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+    padding: 12px 0 50px; position: relative;
   }
-  .stat { text-align: center; }
-  .stat-num { font-size: 32px; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+  .trust-icon { font-size: 18px; }
 
   /* Sections */
   section { padding: 80px 0; }
-  section:nth-child(even) { background: rgba(30,41,59,0.3); }
+  section.alt { background: rgba(30,41,59,0.25); }
   .section-label {
-    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
-    color: var(--accent); margin-bottom: 12px; text-align: center;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); margin-bottom: 10px; text-align: center;
   }
-  .section-title { font-size: 28px; font-weight: 700; text-align: center; margin-bottom: 16px; }
-  .section-sub { text-align: center; color: var(--muted); font-size: 15px; margin-bottom: 48px; }
+  .section-title { font-size: 28px; font-weight: 700; text-align: center; margin-bottom: 12px; }
+  .section-sub { text-align: center; color: var(--muted); font-size: 15px; margin-bottom: 44px; }
 
-  /* Capability cards */
+  /* Tech Stack */
+  .tech-grid {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 700px; margin: 0 auto;
+  }
+  .tech-badge {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 10px 18px; font-size: 14px; color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .tech-badge:hover { border-color: var(--accent); }
+  .tech-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* Capabilities */
   .capabilities {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 16px; list-style: none;
   }
   .cap-card {
@@ -128,22 +124,34 @@
   .cap-card .icon { font-size: 36px; margin-bottom: 16px; display: block; }
   .cap-card h3 { font-size: 17px; margin-bottom: 8px; }
   .cap-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-  .cap-card .examples {
-    margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px;
-  }
+  .cap-card .examples { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
   .cap-card .tag {
-    font-size: 11px; padding: 3px 10px;
-    border-radius: 12px; background: rgba(56,189,248,0.1);
-    color: var(--accent); border: 1px solid rgba(56,189,248,0.2);
+    font-size: 11px; padding: 3px 10px; border-radius: 12px;
+    background: rgba(56,189,248,0.1); color: var(--accent);
+    border: 1px solid rgba(56,189,248,0.2);
   }
+
+  /* Why Us */
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px; list-style: none;
+  }
+  .why-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px 24px; text-align: center;
+    transition: border-color 0.2s;
+  }
+  .why-card:hover { border-color: var(--accent); }
+  .why-card .why-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+  .why-card h3 { font-size: 15px; margin-bottom: 6px; }
+  .why-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
   /* Cases */
   .cases { display: flex; flex-direction: column; gap: 16px; }
   .case-card {
     background: var(--card); border: 1px solid var(--border);
     border-radius: 14px; padding: 28px 28px 28px 32px;
-    display: flex; gap: 20px; align-items: flex-start;
-    transition: border-color 0.2s;
+    display: flex; gap: 20px; align-items: flex-start; transition: border-color 0.2s;
   }
   .case-card:hover { border-color: var(--accent); }
   .case-icon {
@@ -157,30 +165,25 @@
   .case-info p { font-size: 14px; color: var(--muted); line-height: 1.6; }
   .case-result {
     flex-shrink: 0; text-align: center;
-    padding: 12px 16px; background: rgba(74,222,128,0.08);
-    border-radius: 12px; border: 1px solid rgba(74,222,128,0.2);
+    padding: 14px 18px; background: rgba(74,222,128,0.06);
+    border-radius: 12px; border: 1px solid rgba(74,222,128,0.15);
   }
   .case-result .big { font-size: 24px; font-weight: 800; color: var(--green); }
   .case-result .small { font-size: 11px; color: var(--muted); }
 
   /* Process */
   .process {
-    display: flex; gap: 20px; justify-content: center;
-    flex-wrap: wrap; list-style: none;
+    display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; list-style: none;
   }
   .process-step {
-    flex: 1; min-width: 180px; max-width: 220px;
-    text-align: center; padding: 32px 16px;
-    background: var(--card); border: 1px solid var(--border);
+    flex: 1; min-width: 180px; max-width: 220px; text-align: center;
+    padding: 32px 16px; background: var(--card); border: 1px solid var(--border);
     border-radius: 14px; position: relative;
   }
   .process-step .num {
-    width: 44px; height: 44px;
-    background: var(--gradient); color: #fff;
-    border-radius: 50%; display: flex;
-    align-items: center; justify-content: center;
-    font-weight: 800; font-size: 20px;
-    margin: 0 auto 16px;
+    width: 44px; height: 44px; background: var(--gradient); color: #fff;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 20px; margin: 0 auto 16px;
   }
   .process-step h3 { font-size: 15px; margin-bottom: 6px; }
   .process-step p { font-size: 13px; color: var(--muted); }
@@ -189,47 +192,63 @@
   .faq { max-width: 640px; margin: 0 auto; }
   .faq-item {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 24px 28px; margin-bottom: 10px;
+    border-radius: 12px; padding: 22px 26px; margin-bottom: 10px;
+    cursor: pointer; transition: border-color 0.2s;
   }
-  .faq-item h4 { font-size: 15px; margin-bottom: 6px; }
-  .faq-item p { font-size: 14px; color: var(--muted); }
+  .faq-item:hover { border-color: var(--accent); }
+  .faq-item h4 { font-size: 15px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .faq-item h4 .q { color: var(--accent); font-size: 18px; flex-shrink: 0; }
+  .faq-item p { font-size: 14px; color: var(--muted); padding-left: 26px; }
+
+  /* Contact */
+  .contact-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px; max-width: 580px; margin: 0 auto;
+  }
+  .contact-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px 24px; text-align: center;
+    text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .contact-card .cc-icon { font-size: 36px; margin-bottom: 10px; display: block; }
+  .contact-card .cc-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .contact-card .cc-detail { font-size: 14px; color: var(--muted); word-break: break-all; }
+  .contact-card.wechat { border-color: rgba(74,222,128,0.3); background: rgba(74,222,128,0.04); }
 
   /* CTA */
-  .cta-section {
-    text-align: center; padding: 80px 0 100px;
-  }
+  .cta-section { text-align: center; padding: 80px 0 100px; }
   .cta-card {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 20px; padding: 56px 32px;
-    max-width: 600px; margin: 0 auto;
+    border-radius: 20px; padding: 56px 32px; max-width: 600px; margin: 0 auto;
     position: relative; overflow: hidden;
   }
   .cta-card::before {
-    content: '';
-    position: absolute;
-    top: -100px; left: 50%; transform: translateX(-50%);
+    content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
     width: 400px; height: 400px;
     background: radial-gradient(circle, rgba(129,140,248,0.1) 0%, transparent 70%);
     pointer-events: none;
   }
   .cta-card h2 { font-size: 26px; margin-bottom: 12px; position: relative; }
-  .cta-card p { color: var(--muted); margin-bottom: 28px; position: relative; }
+  .cta-card p { color: var(--muted); margin-bottom: 28px; position: relative; font-size: 15px; }
   .cta-card .btn-primary { position: relative; }
 
   footer {
-    text-align: center; padding: 32px 0 48px;
-    font-size: 13px; color: #475569;
-    border-top: 1px solid var(--border);
+    text-align: center; padding: 28px 0 40px;
+    font-size: 13px; color: #475569; border-top: 1px solid var(--border);
   }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
 
   @media (max-width: 640px) {
-    .hero { padding: 60px 0 48px; }
-    .hero h1 { font-size: 30px; }
+    .hero { padding: 50px 0 36px; }
+    .hero h1 { font-size: 28px; }
     .hero .sub { font-size: 15px; }
-    .stats { gap: 28px; }
+    .trust-bar { gap: 24px; padding-bottom: 36px; }
     .case-card { flex-direction: column; }
     .case-result { align-self: stretch; text-align: center; }
-    .section-title { font-size: 24px; }
+    .section-title { font-size: 22px; }
     section { padding: 48px 0; }
   }
 </style>
@@ -240,31 +259,41 @@
 <header class="hero container">
   <div class="hero-badge"><span class="dot"></span>可接新单 · 当天响应</div>
   <h1>你的<span>想法</span>，我们把它<span>做出来</span></h1>
-  <p class="sub">AI工具定制开发——自动化脚本、智能客服、网页小程序。<br>做不出来，不收钱。</p>
+  <p class="sub">AI工具定制开发——自动化脚本、智能客服、网页小程序<br>做不出来，不收钱</p>
   <div class="hero-cta">
-    <a href="mailto:3314003363@qq.com" class="btn-primary">说出你的需求 →</a>
+    <a href="#contact" class="btn-primary">聊聊你的需求 →</a>
     <a href="#capabilities" class="btn-secondary">看看能做什么</a>
   </div>
 </header>
 
-<!-- Stats -->
-<div class="stats container">
-  <div class="stat">
-    <div class="stat-num">&lt; 48h</div>
-    <div class="stat-label">平均交付周期</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">24h</div>
-    <div class="stat-label">报价响应时间</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">0</div>
-    <div class="stat-label">先付款风险</div>
-  </div>
+<div class="trust-bar container">
+  <div class="trust-item"><span class="trust-icon">✅</span> 做不出来不要钱</div>
+  <div class="trust-item"><span class="trust-icon">⚡</span> 24小时给报价</div>
+  <div class="trust-item"><span class="trust-icon">🔧</span> 交付后免费改7天</div>
+  <div class="trust-item"><span class="trust-icon">📦</span> 源码全部交付</div>
 </div>
 
+<!-- Tech Stack -->
+<section>
+  <div class="container">
+    <div class="section-label">Tech Stack</div>
+    <h2 class="section-title">用什么工具干活</h2>
+    <p class="section-sub">现在的AI技术栈，不是十年前的老古董</p>
+    <div class="tech-grid">
+      <div class="tech-badge"><span class="tech-dot" style="background:#38bdf8"></span> Dify AI平台</div>
+      <div class="tech-badge"><span class="tech-dot" style="background:#818cf8"></span> FastAPI</div>
+      <div class="tech-badge"><span class="tech-dot" style="background:#4ade80"></span> DeepSeek</div>
+      <div class="tech-badge"><span class="tech-dot" style="background:#f59e0b"></span> Python自动化</div>
+      <div class="tech-badge"><span class="tech-dot" style="background:#ef4444"></span> 微信小程序</div>
+      <div class="tech-badge"><span class="tech-dot" style="background:#a78bfa"></span> 向量数据库</div>
+      <div class="tech-badge"><span class="tech-dot" style="background:#fb923c"></span> Docker部署</div>
+      <div class="tech-badge"><span class="tech-dot" style="background:#34d399"></span> RAG知识库</div>
+    </div>
+  </div>
+</section>
+
 <!-- Capabilities -->
-<section id="capabilities">
+<section id="capabilities" class="alt">
   <div class="container">
     <div class="section-label">Services</div>
     <h2 class="section-title">能帮你做什么</h2>
@@ -279,7 +308,6 @@
           <span class="tag">数据采集清洗</span>
           <span class="tag">订单自动录入</span>
           <span class="tag">报表自动生成</span>
-          <span class="tag">文件批量改名</span>
         </div>
       </div>
       <div class="cap-card">
@@ -291,7 +319,6 @@
           <span class="tag">预约/预订系统</span>
           <span class="tag">微信小程序</span>
           <span class="tag">数据看板</span>
-          <span class="tag">H5活动页</span>
         </div>
       </div>
       <div class="cap-card">
@@ -303,15 +330,45 @@
           <span class="tag">企业知识库问答</span>
           <span class="tag">内容自动生成</span>
           <span class="tag">文档智能分析</span>
-          <span class="tag">AI数据分类</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Why Us -->
+<section id="why">
+  <div class="container">
+    <div class="section-label">Why Us</div>
+    <h2 class="section-title">为什么选我们</h2>
+    <p class="section-sub">市面上做开发的很多，但我们不太一样</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🎯</span>
+        <h3>不是外包公司</h3>
+        <p>没有销售、没有项目经理、没有层层转包。你直接和技术对接，需求不走形</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">💰</span>
+        <h3>报价只有外包的1/3</h3>
+        <p>没有中间商赚差价。传统外包公司报价15000的项目，我们5000能做</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🚀</span>
+        <h3>AI加持，交付更快</h3>
+        <p>传统开发2周的工作量，我们用AI辅助3天交付。效率翻倍，成本减半</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🛡️</span>
+        <h3>0风险合作</h3>
+        <p>做完验收再付。不满意改到满意。技术上没把握的项目直接告诉你做不了</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Cases -->
-<section id="cases">
+<section id="cases" class="alt">
   <div class="container">
     <div class="section-label">Case Studies</div>
     <h2 class="section-title">几个真实场景</h2>
@@ -321,8 +378,8 @@
         <div class="case-icon">💇</div>
         <div class="case-info">
           <h3>理发店微信客服机器人</h3>
-          <div class="case-meta">AI智能客服 · 2天交付</div>
-          <p>老板每天手动回几十条预约消息。接上AI客服后，自动回预约时间、发价目表、发定位，复杂问题才转人工。老板说"等于省了一个前台"。</p>
+          <div class="case-meta">AI智能客服 · 2天交付 · ¥2000</div>
+          <p>老板每天手动回几十条预约消息。接上AI客服后，自动回预约时间、发价目表、发定位，复杂问题才转人工。</p>
         </div>
         <div class="case-result">
           <div class="big">3h/天</div>
@@ -333,8 +390,8 @@
         <div class="case-icon">📊</div>
         <div class="case-info">
           <h3>电商每日报表自动生成</h3>
-          <div class="case-meta">自动化脚本 · 1天交付</div>
-          <p>客户每天要从3个平台导出订单数据、对账、算利润，手工弄1个多小时。写了自动化脚本，每天点一下，3分钟出结果，自动发到邮箱。</p>
+          <div class="case-meta">自动化脚本 · 1天交付 · ¥800</div>
+          <p>客户每天要从3个平台导出订单数据、对账、算利润，手工弄1个多小时。写了自动化脚本，点一下3分钟出结果，自动发邮箱。</p>
         </div>
         <div class="case-result">
           <div class="big">95%</div>
@@ -345,8 +402,8 @@
         <div class="case-icon">🏪</div>
         <div class="case-info">
           <h3>小型律所知识库问答</h3>
-          <div class="case-meta">AI知识库 · 5天交付</div>
-          <p>律所有几百份判例文档，翻起来费劲。把文档导入AI知识库后，输入问题直接出相关判例和法条摘要，效率翻了好几倍。</p>
+          <div class="case-meta">AI知识库 · 5天交付 · ¥8000</div>
+          <p>律所有几百份判例文档，翻起来费劲。导入AI知识库后，输入问题直接出相关判例和法条摘要，效率翻了好几倍。</p>
         </div>
         <div class="case-result">
           <div class="big">秒级</div>
@@ -384,28 +441,52 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq">
+<section id="faq" class="alt">
   <div class="container">
     <div class="section-label">FAQ</div>
     <h2 class="section-title">你可能想问</h2>
-    <p class="section-sub"></p>
     <div class="faq">
       <div class="faq-item">
-        <h4>真的做不出来不收钱？</h4>
+        <h4><span class="q">Q</span> 真的做不出来不收钱？</h4>
         <p>真的。开工前我会评估能不能做，技术上没把握的不会接。接了就一定给你做出来。</p>
       </div>
       <div class="faq-item">
-        <h4>怎么保证交付质量？</h4>
+        <h4><span class="q">Q</span> 怎么保证交付质量？</h4>
         <p>交付后7天内免费修改。后续维护按需议价，小改动通常不收钱。</p>
       </div>
       <div class="faq-item">
-        <h4>一般多少钱？</h4>
-        <p>简单自动化脚本 300-2000；网页/小程序 2000-15000；AI功能接入 3000-30000。具体看你需求复杂度。</p>
+        <h4><span class="q">Q</span> 一般多少钱？</h4>
+        <p>简单自动化脚本 ¥300-2000；网页/小程序 ¥2000-15000；AI功能接入 ¥3000-30000。具体看你需求复杂度。</p>
       </div>
       <div class="faq-item">
-        <h4>数据安全有保障吗？</h4>
-        <p>你的数据就是你的。开发完成后所有源码、文档全部交付，不保留副本。敏感数据可以签保密协议。</p>
+        <h4><span class="q">Q</span> 数据安全有保障吗？</h4>
+        <p>你的数据就是你的。开发完成后所有源码、文档全部交付，不保留副本。敏感数据可签保密协议。</p>
       </div>
+      <div class="faq-item">
+        <h4><span class="q">Q</span> 你不是一个人吗，能做多少？</h4>
+        <p>一个人+AI的效率远超你想像。AI负责写代码，我负责架构设计和质量把关。同时只接1-2个项目，不贪多。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">怎么联系</h2>
+    <p class="section-sub">两种方式，随你方便</p>
+    <div class="contact-grid">
+      <a class="contact-card wechat" href="javascript:void(0)" onclick="copyWechat()">
+        <span class="cc-icon">💬</span>
+        <div class="cc-title">微信</div>
+        <div class="cc-detail" id="wechatId">caoyezhen （点击复制）</div>
+      </a>
+      <a class="contact-card" href="mailto:3314003363@qq.com">
+        <span class="cc-icon">📧</span>
+        <div class="cc-title">邮件</div>
+        <div class="cc-detail">3314003363@qq.com</div>
+      </a>
     </div>
   </div>
 </section>
@@ -414,14 +495,26 @@
 <div class="cta-section container">
   <div class="cta-card">
     <h2>有想法？聊聊看，聊不要钱</h2>
-    <p>把你的需求说清楚，我来评估能不能做、划不划算。<br>能做就报价，不能做直说，不浪费你时间。</p>
-    <a href="mailto:3314003363@qq.com" class="btn-primary">发邮件聊聊 →</a>
+    <p>把你的需求说清楚，我来评估能不能做、划不划算<br>能做就报价，不能做直说，不浪费你时间</p>
+    <a href="#contact" class="btn-primary">现在联系 →</a>
   </div>
 </div>
 
 <footer class="container">
   独立开发者 · 代码说话 · 做不出来不要钱
 </footer>
+
+<script>
+function copyWechat() {
+  navigator.clipboard.writeText('caoyezhen').then(() => {
+    const el = document.getElementById('wechatId');
+    const orig = el.textContent;
+    el.textContent = '已复制！打开微信搜索添加';
+    el.style.color = '#4ade80';
+    setTimeout(() => { el.textContent = orig; el.style.color = ''; }, 2000);
+  }).catch(() => {});
+}
+</script>
 
 </body>
 </html>
